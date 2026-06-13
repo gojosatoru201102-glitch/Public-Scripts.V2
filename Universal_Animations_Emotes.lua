@@ -24,13 +24,19 @@ if not getgenv().OriginalAnimations then
 			OriginalAnimations[3] = poseAnimation.AnimationId
 		end
 	end
-	OriginalAnimations[1] = Animate.idle.Animation1.AnimationId
-	OriginalAnimations[2] = Animate.idle.Animation2.AnimationId
-	OriginalAnimations[4] = Animate.walk:FindFirstChildOfClass("Animation").AnimationId
-	OriginalAnimations[5] = Animate.run:FindFirstChildOfClass("Animation").AnimationId
-	OriginalAnimations[6] = Animate.jump:FindFirstChildOfClass("Animation").AnimationId
-	OriginalAnimations[7] = Animate.climb:FindFirstChildOfClass("Animation").AnimationId
-	OriginalAnimations[8] = Animate.fall:FindFirstChildOfClass("Animation").AnimationId
+	
+	-- Safe check to ensure 'idle' and its animations exist before indexing
+	if Animate:FindFirstChild("idle") then
+		if Animate.idle:FindFirstChild("Animation1") then OriginalAnimations[1] = Animate.idle.Animation1.AnimationId end
+		if Animate.idle:FindFirstChild("Animation2") then OriginalAnimations[2] = Animate.idle.Animation2.AnimationId end
+	end
+	
+	if Animate:FindFirstChild("walk") and Animate.walk:FindFirstChildOfClass("Animation") then OriginalAnimations[4] = Animate.walk:FindFirstChildOfClass("Animation").AnimationId end
+	if Animate:FindFirstChild("run") and Animate.run:FindFirstChildOfClass("Animation") then OriginalAnimations[5] = Animate.run:FindFirstChildOfClass("Animation").AnimationId end
+	if Animate:FindFirstChild("jump") and Animate.jump:FindFirstChildOfClass("Animation") then OriginalAnimations[6] = Animate.jump:FindFirstChildOfClass("Animation").AnimationId end
+	if Animate:FindFirstChild("climb") and Animate.climb:FindFirstChildOfClass("Animation") then OriginalAnimations[7] = Animate.climb:FindFirstChildOfClass("Animation").AnimationId end
+	if Animate:FindFirstChild("fall") and Animate.fall:FindFirstChildOfClass("Animation") then OriginalAnimations[8] = Animate.fall:FindFirstChildOfClass("Animation").AnimationId end
+	
 	if Animate:FindFirstChild("swim") then 
 		OriginalAnimations[9] = Animate.swim:FindFirstChildOfClass("Animation").AnimationId
 		OriginalAnimations[10] = Animate.swimidle:FindFirstChildOfClass("Animation").AnimationId
@@ -43,9 +49,9 @@ local function GetOriginalAnimation(animationIndex)
 end
 
 if syn and syn.queue_on_teleport and not getgenv().AlreadyLoaded then 
-	syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/adoniscries/main/Source.lua',true))()\nloadstring(game:HttpGet('https://raw.githubusercontent.com/Eazvy/public-scripts/main/Universal_Animations_Emotes.lua'))()")
+	syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/adoniscries/main/Source.lua',true))()\nloadstring(game:HttpGet('https://raw.githubusercontent.com/gojosatoru201102-glitch/Public-Scripts.V2/refs/heads/main/Universal_Animations_Emotes.lua'))()")
 elseif queue_on_teleport and not getgenv().AlreadyLoaded then 
-	queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/adoniscries/main/Source.lua',true))()\nloadstring(game:HttpGet('https://raw.githubusercontent.com/Eazvy/public-scripts/main/Universal_Animations_Emotes.lua'))()")
+	queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/adoniscries/main/Source.lua',true))()\nloadstring(game:HttpGet('https://raw.githubusercontent.com/gojosatoru201102-glitch/Public-Scripts.V2/refs/heads/main/Universal_Animations_Emotes.lua'))()")
 end 
 
 local vu = game:GetService("VirtualUser")
@@ -285,6 +291,204 @@ local Emotes = {
 	['Panini Dance - Lil Nas X (LNX)'] = 5915713518;
 	['Fishing'] = 3334832150;
 	['Robot'] = 3338025566;
+	['Around Town'] = 3303391864;
+	['Saturday Dance - Twenty One'] = 7422807549;
+	['Top Rock'] = 3361276673;
+	['Keeping Time'] = 4555808220;
+	['Air Dance'] = 4555782893;
+	['Fancy Feet'] = 3333432454;
+	['Rock Guitar - Royal Blood'] = 6532134724;
+	["Borock's Rage"] = 3236842542;
+	["Ud'zal's Summoning"] = 3303161675;
+	['Y'] = 4349285876;
+	['Swan Dance'] = 7465997989;
+	['Louder'] = 3338083565;
+	['Up and Down - Twenty One'] = 7422797678;
+	['Swish'] = 3361481910;
+	['Drummer Moves - Twenty One'] = 7422527690;
+	['Sneaky'] = 3334424322;
+	['Heisman Pose'] = 3695263073;
+	['Jacks'] = 3338066331;
+	['Cha-Cha 2'] = 3695322025;
+	['BURBERRY LOLA ATTITUDE - NIMBUS'] = 10147821284;
+	['BURBERRY LOLA  ATTITUDE - GEM'] = 10147815602;
+	['BURBERRY LOLA ATTITUDE - HYDRO'] = 10147823318;
+	['BURBERRY LOLA ATTITUDE - BLOOM'] = 10147817997;
+	['Superhero Reveal'] = 3695373233;
+	['Air Guitar'] = 3695300085;
+	['Dismissive Wave'] = 3333272779;
+	['Country Line  Dance - Lil Nas X'] = 5915712534;
+	['Salute'] = 3333474484;
+	['Applaud'] = 5915693819;
+	['Get Out'] = 3333272779;
+	['Hwaiting (화이팅)'] = 9527885267;
+	['Annyeong (안녕)'] = 9527883498;
+	['Bunny Hop'] = 4641985101;
+	['Sandwich Dance'] = 4406555273;
+	['Hyperfast  5G Dance Move'] = 9408617181;
+	['Victory - 24kGoldn'] = 9178377686;
+	['Tantrum'] = 5104341999;
+	['Rock Star - Royal Blood'] = 10714400171;
+	['Drum Solo - Royal Blood'] = 6532839007;
+	['Drum Master - Royal Blood'] = 6531483720;
+	['High Hands'] = 9710985298;
+	['Tilt'] = 3334538554;
+	['Gashina - SUNMI'] = 9527886709;
+	['Chicken Dance'] = 4841399916;
+	["You can't sit with us - Sunmi"] = 9983520970;
+	["Frosty Flair - Tommy Hilfiger"] = 10214311282;
+	["Floor Rock Freeze - Tommy Hilfiger"] = 10214314957;
+	['Boom Boom Clap - George Ezra'] = 10370346995;
+	['Cartwheel - George Ezra'] = 10370351535;
+	['Chill Vibes - George Ezra'] = 10370353969; 
+	['Sidekicks - George Ezra'] = 10370362157;
+	['The Conductor - George Ezra'] = 10370359115;
+	['Super Charge'] = 10478338114;
+	['Swag Walk'] = 10478341260;
+	['Mean Mug - Tommy Hilfiger'] = 10214317325;
+	['V Pose - Tommy Hilfiger'] = 10214319518;
+	['Uprise - Tommy Hilfiger'] = 10275008655;
+	['2 Baddies Dance Move - NCT 127'] = 12259828678; 
+	['Kick It Dance Move - NCT 127'] = 12259826609;
+	['Sticker Dance Move - NCT 127'] = 12259825026;
+	['Elton John - Rock Out'] = 11753474067;
+	['Elton John - Heart Skip'] = 11309255148;
+	['Elton John - Still Standing'] = 11444443576;
+	['Elton John - Elevate'] = 11394033602;
+	['Elton John - Cat Man'] = 11444441914;
+	['Elton John - Piano Jump'] = 11453082181;
+	['Alo Yoga Pose - Triangle'] = 12507084541;
+	['Alo Yoga Pose - Warrior II'] = 12507083048;
+	['Alo Yoga Pose - Lotus Position'] = 12507085924;
+	['TWICE-Moonlight-Sunrise'] = 12714233242;
+	['TWICE-Set-Me-Free-Dance-1'] = 12714228341;
+	['TWICE-Set-Me-Free-Dance-2'] = 12714231087;
+	['Ay-Yo-Dance-Move-NCT-127'] = 12804157977;
+	['TWICE-The-Feels'] = 12874447851;
+	['Rise-Above-The-Chainsmokers'] = 12992262118;
+	['TWICE-What-Is-Love'] = 13327655243;
+	['Man-City-Bicycle-Kick'] = 13421057998;
+	['TWICE-Fancy'] = 13520524517;
+	['TWICE Pop by Nayeon'] = 13768941455;
+	['Tommy - Archer'] = 13823324057;
+	['TWICE-Pop-by-Nayeon'] = 13768941455;
+	['Man City Backflip'] = 13694100677;
+	['Man-City-Scorpion-Kick'] = 13694096724;
+	['Arm Twist'] = 10713968716;
+	['YUNGBLUD – HIGH KICK'] = 14022936101;
+	['TWICE Like Ooh-Ahh'] = 14123781004;
+	['Baby Queen - Air Guitar & Knee Slide'] = 14352335202;
+	['Baby Queen - Dramatic Bow'] = 14352337694;
+	['Baby Queen - Face Frame'] = 14352340648;
+	['Baby Queen - Bouncy Twirl'] = 14352343065;
+	['Baby Queen - Strut'] = 14352362059;
+	['BLACKPINK Pink Venom - Get em Get em Get em'] = 14548619594;
+	['BLACKPINK Pink Venom - I Bring the Pain Like…'] = 14548620495;
+	['BLACKPINK Pink Venom - Straight to Ya Dome'] = 14548621256;
+	['TWICE LIKEY'] = 14899979575;
+	['TWICE Feel Special'] = 14899980745;
+	['BLACKPINK Shut Down - Part 1'] = 14901306096;
+	['BLACKPINK Shut Down - Part 2'] = 14901308987;
+	["Bone Chillin' Bop"] = 15122972413;
+	['Paris Hilton - Sliving For The Groove'] = 15392759696;
+	['Paris Hilton - Iconic IT-Grrrl'] = 15392756794;
+	['Paris Hilton - Checking My Angles'] = 15392752812;
+	['BLACKPINK JISOO Flower'] = 15439354020;
+	['BLACKPINK JENNIE You and Me'] = 15439356296;
+	['Rock n Roll'] = 15505458452;
+	['Air Guitar'] = 15505454268;
+	['Victory Dance'] = 15505456446;
+	['Flex Walk'] = 15505459811;
+	['Olivia Rodrigo Head Bop'] = 15517864808;
+	['Olivia Rodrigo good 4 u'] = 15517862739;
+	['Olivia Rodrigo Fall Back to Float'] = 15549124879;
+	["Nicki Minaj That's That Super Bass"] = 15571446961;
+	['Nicki Minaj Boom Boom Boom'] = 15571448688;
+	['Nicki Minaj Anaconda'] = 15571450952;
+	['Nicki Minaj Starships'] = 15571453761;
+	['Yungblud Happier Jump'] = 15609995579;
+	['Festive Dance'] = 15679621440;
+	['BLACKPINK LISA Money'] = 15679623052;
+	['BLACKPINK ROSÉ On The Ground'] = 15679624464;
+	['Imagine Dragons - “Bones” Dance'] = 15689279687;
+	['GloRilla - "Tomorrow" Dance'] = 15689278184;
+	['d4vd - Backflip'] = 15693621070;
+	['ericdoa - dance'] = 15698402762;
+	['Cuco - Levitate'] = 15698404340;
+	['Mean Girls Dance Break'] = 15963314052;
+	['Paris Hilton Sanasa'] = 16126469463;
+	['BLACKPINK Ice Cream'] = 16181797368;
+	['BLACKPINK Kill This Love'] = 16181798319;
+	['TWICE I GOT YOU part 1'] = 16215030041;
+	['TWICE I GOT YOU part 2'] = 16256203246;
+	["Dave's Spin Move - Glass Animals"] = 16272432203;
+	['Sol de Janeiro - Samba'] = 16270690701;
+	['Beauty Touchdown'] = 16302968986;
+	['Skadoosh Emote - Kung Fu Panda 4'] = 16371217304;
+	['Jawny - Stomp'] = 16392075853;
+	['Mae Stephens - Piano Hands'] = 16553163212;
+	['BLACKPINK Boombayah Emote'] = 16553164850;
+	['BLACKPINK DDU-DU DDU-DU'] = 16553170471;
+	['HIPMOTION - Amaarae'] = 16572740012;
+	['Mae Stephens – Arm Wave'] = 16584481352;
+	['Wanna play?'] = 16646423316;
+	['BLACKPINK-How-You-Like-That'] = 16874470507;
+	['BLACKPINK - Lovesick Girls'] = 16874472321;
+	['Mini Kong'] = 17000021306;
+	["HUGO Let's Drive!"] = 17360699557;
+	['Wisp - air guitar'] = 17370775305;
+	['Vans Ollie'] = 18305395285;
+	['Sturdy Dance - Ice Spice'] = 17746180844;
+	['Shuffle'] = 17748314784;
+	['Rolling Stones Guitar Strum'] = 18148804340;
+	['Rock Out - Bebe Rexha'] = 18225053113;
+	['SpongeBob Imaginaaation 🌈'] = 18443237526;
+	['SpongeBob Dance'] = 18443245017;
+	['Shrek Roar'] = 18524313628;
+	['Team USA Breaking Emote'] = 18526288497;
+	['NBA WNBA Fadeaway'] = 18526362841;
+	['Vroom Vroom'] = 18526397037;
+	['TMNT Dance'] = 18665811005;
+	['Olympic Dismount'] = 18665825805;
+	["BLACKPINK As If It's Your Last"] = 18855536648;
+	["BLACKPINK Don't know what to do"] = 18855531354;
+	['TWICE ABCD by Nayeon'] = 18933706381;
+	['Charli xcx - Apple Dance'] = 18946844622;
+	['The Zabb'] = 129470135909814;
+	['Fashion Klossette - Runway my way'] = 80995190624232;
+	['ALTÉGO - Couldn’t Care Less'] = 107875941017127;
+	['Fashion Roadkill'] = 136831243854748;
+	['Skibidi Toilet - Titan Speakerman Laser Spin'] = 134283166482394;
+	['Chappell Roan HOT TO GO!'] = 85267023718407;
+	['Secret Handshake Dance'] = 71243990877913;
+	['KATSEYE - Touch'] = 135876612109535;
+	['Fashion Spin'] = 131669256082047;
+	['TWICE Strategy'] = 97311229290836;
+	['NBA Monster Dunk'] = 132748833449150;
+	['DearALICE - Ariana'] = 134318425949290;
+	['The Weeknd Starboy Strut'] = 71105746210464;
+	['The Weeknd Opening Night'] = 133110725387025;
+	['Robot M3GAN'] = 125803725853577;  
+	["M3GAN's Dance"] = 99649534578309;
+	['Rasputin – Boney M.'] = 114872820353992;
+	['Thanos Happy Jump - Squid Game'] = 97611664803614;
+	['Young-hee Head Spin - Squid Game'] = 112011282168475;
+	['TWICE Takedown'] = 140182843839424;
+	['Stray Kids Walkin On Water'] = 125064469983655;
+	['TWICE TAKEDOWN DANCE 2'] = 127104635954695;
+}
+
+
+local Animations = {
+	Emotes = {Weight=9, Weight2=1},
+	Stylish = {Idle = 616136790, Idle2=616138447, Idle3=886888594, Walk=616146177,Run=616140816,Jump=616139451,Climb=616133594,Fall=616134815, Swim=616143378, SwimIdle=616144772, Weight=9, Weight2=1},
+	Zombie = {Idle = 616158929, Idle2=616160636, Idle3=885545458, Walk=616168032,Run=616163682,Jump=616161997,Climb=616156119,Fall=616157476, Swim=616165109, SwimIdle=616166655, Weight=9, Weight2=1}, 
+	Robot = {Idle = 616088211, Idle2=616089559, Idle3=885531463, Walk=616095330,Run=616091570,Jump=616090535,Climb=616086039,Fall=616087089, Swim=616092998, SwimIdle=616094091, Weight=9, Weight2=1},
+	Toy = {Idle = 782841498, Idle2=782845736, Idle3=980952228, Walk=782843345,Run=782842708,Jump=782847020,Climb=782843869,Fall=782846423, Swim=782844582, SwimIdle=782845186, Weight=9, Weight2=1},
+	Cartoony = {Idle = 742637544, Idle2=742638445, Idle3=885477856, Walk=742640026,Run=742638842,Jump=742637942,Climb=742636889,Fall=742637151, Swim=742639220, SwimIdle=742639812, Weight=9, Weight2=1},
+	Superhero = {Idle = 616111295, Idle2=616113536, Idle3=885535855, Walk=616122287,Run=616117076,Jump=616115533,Climb=616104706,Fall=616108001, Swim=616119360, SwimIdle=616120861, Weight=9, Weight2=1},
+	Mage = {Idle = 707742142, Idle2=707855907, Idle3=885508740, Walk=707897309,Run=707861613,Jump=707853694,Climb=707826056,Fall=707829716, Swim=707876443, SwimIdle=707894699, Weight=9, Weight2=1},
+	Levitation = {Idle = 616006778, Idle2=616008087, Idle3=886862142, Walk=616t'] = 3338025566;
 	['Around Town'] = 3303391864;
 	['Saturday Dance - Twenty One'] = 7422807549;
 	['Top Rock'] = 3361276673;
